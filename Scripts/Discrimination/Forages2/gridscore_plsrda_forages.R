@@ -1,18 +1,33 @@
 library(rchemo)
 
-data(forages)
-names(forages)
-Xtrain <- forages$Xtrain
-ytrain <- forages$ytrain
-Xtest <- forages$Xtest
-ytest <- forages$ytest
+path <- "D:/Mes Donnees/Users/Applications/Nirs/Packages/ChemHouse/rchemoDemo/"
+db <- paste(path, "Data/forages2.rda", sep = "")
+db
+load(db)
+names(dat)
+X <- dat$X
+Y <- dat$Y
+headm(X)
+headm(Y)
+y <- Y$typ
+test <- Y$test
+namy <- names(Y)[1:2]
+namy
+n <- nrow(X)
+
+table(y, test)
+
+s <- which(test == 1)
+Xtrain <- X[-s, ]
+ytrain <- y[-s]
+Xtest <- X[s, ]
+ytest <- y[s]
+headm(Xtrain)
+headm(Xtest)
 ntrain <- nrow(Xtrain)
 ntest <- nrow(Xtest)
 ntot <- ntrain + ntest
 c(ntot = ntot, ntrain = ntrain, ntest = ntest)
-
-table(ytrain)
-table(ytest)
 
 plotsp(Xtrain,
     col = sample(1:ntrain), lwd = 2,
@@ -52,20 +67,16 @@ ncal <- ntrain - nval
 c(ntot = ntot, ntrain = ntrain, ntest = ntest, 
     ncal = ncal, nval = nval)
 
-gamma <- 10^(-5:1)
-nlv <- 1:40
+nlv <- 0:40
 res <- gridscorelv(Xcal, ycal, Xval, yval, 
-    score = err, fun = kplsrda,
-    pars = pars, nlv = nlv, verb = TRUE)
-group <- res$gamma
-plotscore(res$nlv, res$y1, group, lwd = 2,
+    score = err, fun = plsrda,
+    nlv = nlv, verb = TRUE)
+plotscore(res$nlv, res$y1, lwd = 2,
     xlab = "Nb. LVs", ylab = "ERR_CV")
 u <- res[res$y1 == min(res$y1), ][1, , drop = FALSE]
 u
 
-
-fm <- kplsrda(Xtrain, ytrain, 
-    gamma = u$gamma, nlv = u$nlv)
+fm <- plsrda(Xtrain, ytrain, nlv = u$nlv)
 pred <- predict(fm, Xtest)$pred
 err(pred, ytest)
 

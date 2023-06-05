@@ -1,18 +1,33 @@
 library(rchemo)
 
-data(forages)
-names(forages)
-Xtrain <- forages$Xtrain
-ytrain <- forages$ytrain
-Xtest <- forages$Xtest
-ytest <- forages$ytest
+path <- "D:/Mes Donnees/Users/Applications/Nirs/Packages/ChemHouse/rchemoDemo/"
+db <- paste(path, "Data/forages2.rda", sep = "")
+db
+load(db)
+names(dat)
+X <- dat$X
+Y <- dat$Y
+headm(X)
+headm(Y)
+y <- Y$typ
+test <- Y$test
+namy <- names(Y)[1:2]
+namy
+n <- nrow(X)
+
+table(y, test)
+
+s <- which(test == 1)
+Xtrain <- X[-s, ]
+ytrain <- y[-s]
+Xtest <- X[s, ]
+ytest <- y[s]
+headm(Xtrain)
+headm(Xtest)
 ntrain <- nrow(Xtrain)
 ntest <- nrow(Xtest)
 ntot <- ntrain + ntest
 c(ntot = ntot, ntrain = ntrain, ntest = ntest)
-
-table(ytrain)
-table(ytest)
 
 plotsp(Xtrain,
     col = sample(1:ntrain), lwd = 2,
