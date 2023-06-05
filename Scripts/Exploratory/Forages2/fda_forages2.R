@@ -37,18 +37,11 @@ names(fm)
 headm(fm$T)
 summary(fm)
 
+zTtest <- transform(fm, Ttest)
+headm(zTtest)
+
 i <- 1
 plotxy(fm$T[, i:(i + 1)], group = ytrain, ellipse = FALSE, 
     zeroes = TRUE, pch = 16, cex = 1.5, ncol = 2)
 points(fm$Tcenters, pch = 8, col = "blue", cex = 1.5)
-
-zTtest <- transform(fm, Ttest)
-headm(zTtest)
-i <- 1
-plotxy(fm$T[, i:(i + 1)], col = "grey", 
-    zeroes = TRUE, pch = 16, cex = 1.5, ncol = 2)
-points(zTtest[, i:(i + 1)], pch = 8, col = "blue", 
-    cex = 1.5)
-
-
 
