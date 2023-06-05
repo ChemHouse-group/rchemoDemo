@@ -59,3 +59,7 @@ checkdupl(M$id)
 checkdupl(X[, seq(1, ncol(X), 50)])
 checkdupl(Y)
 
+
+
+
+

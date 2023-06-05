@@ -20,6 +20,7 @@ barplot(fm$eig[1:nlv], space = 1, names.arg = 1:nlv,
 
 ## Summary
 res <- summary(fm, X)
+
 names(res)
 
 ## Expliande variance
@@ -27,7 +28,7 @@ res$explvar
 
 ## Correlation circle
 plotxy(res$cor.circle, zeroes = TRUE, asp = 1,
-    label = FALSE, cex = 2, col = "red3",
+    label = FALSE, cex = 1.5, col = "red3",
     circle = TRUE, xlim = c(-1, 1), ylim = c(-1, 1))
 
 ## Individual and variable contributions

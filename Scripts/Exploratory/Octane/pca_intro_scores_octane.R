@@ -36,9 +36,9 @@ plotxy(T[, 1:2], zeroes = TRUE,
     xlab = "PC1", ylab = "PC2")
 
 i <- 1
-plotxy(T[, i:(i + 1)], col = "red",
+plotxy(T[, i:(i + 1)], col = "red3",
     xlab = paste("PC", i), ylab = paste("PC", i + 1),
-    zeroes = TRUE, pch = 16)
+    zeroes = TRUE, pch = 16, cex = 1.5)
 
 ## Loadings
 plotsp(t(P),

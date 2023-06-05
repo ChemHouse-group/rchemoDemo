@@ -62,6 +62,15 @@ headm(fm$P)
 headm(fm$C)
 fm$weights
 
+coef(fm)
+coef(fm, nlv = 3)
+
+## Projections
+
+Ttest <- transform(fm, Xtest)
+#Ttest <- transform(fm, Xtest, nlv = 3)
+headm(Ttest)
+
 ## Predictions
 res <- predict(fm, Xtest)
 names(res)
