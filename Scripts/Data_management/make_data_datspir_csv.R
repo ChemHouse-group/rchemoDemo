@@ -58,8 +58,6 @@ res[res$nbna > 0, ]
 checkdupl(M$id)
 checkdupl(X[, seq(1, ncol(X), 50)])
 checkdupl(Y)
-
-
-
-
+z <- cbind(X[, seq(1, ncol(X), 50)], Y)
+checkdupl(z)
 
