@@ -20,10 +20,9 @@ barplot(fm$eig[1:nlv], space = 1, names.arg = 1:nlv,
 
 ## Summary
 res <- summary(fm, X)
-
 names(res)
 
-## Expliande variance
+## Explained variance
 res$explvar
 
 ## Correlation circle

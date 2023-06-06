@@ -5,21 +5,28 @@ db <- paste(path, "Data/cassav.rda", sep = "")
 db
 load(db)
 names(dat)
-n <- nrow(X)
 X <- dat$X 
 Y <- dat$Y
+n <- nrow(X)
 headm(X)
 headm(Y)
 y <- Y$tbc    
 year <- Y$year
 table(year)
 
-plotsp(X,
+Xp <- detrend(snv(X), degree = 2)
+#Xp <- savgol(snv(X), m = 2, n = 21, p = 3)
+headm(Xp)
+
+zX <- X
+#zX <- Xp
+
+plotsp(zX,
     col = sample(1:n), lwd = 2,
     xlab = "Wawelength (nm)", ylab = "Absorbance")
 
 nlv <- 6
-fm <- pcasvd(X, nlv = nlv) 
+fm <- pcasvd(zX, nlv = nlv) 
 T <- fm$T
 
 i <- 1
