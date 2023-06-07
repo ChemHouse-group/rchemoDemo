@@ -61,6 +61,7 @@ summary(Y[, namy])
 
 j <- 2 # y-variable
 nam <- namy[j]
+nam
 hist(Y[, nam], n = 30,
     main = "", xlab = nam)
 

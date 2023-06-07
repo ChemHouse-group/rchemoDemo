@@ -63,6 +63,7 @@ segm
 ## e.g. Val = 30% of traing (Cal = 70%)
 pct <- .30
 m <- round(pct * ntrain)
+m
 segm = segmts(ntrain, m = m, nrep = 30)
 segm
 
@@ -71,7 +72,7 @@ k <- 1  # replication
 segm[i]
 segm[i][k]
 
-nlv <- 0:20
+nlv <- 1:20
 rescv <- gridcvlv(Xtrain, ytrain, segm, 
     score = rmsep, fun = plskern,
     nlv = nlv, verb = TRUE)

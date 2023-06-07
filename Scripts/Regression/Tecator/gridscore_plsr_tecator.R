@@ -59,6 +59,7 @@ s
 ## Output 'train' contains higher variability
 ## than output 'test'
 res <- sampks(Xtrain, k = nval)
+names(res)
 s <- res$train   # = the most variable data
 s
 ## (3) Duplex sampling

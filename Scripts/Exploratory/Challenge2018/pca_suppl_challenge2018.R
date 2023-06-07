@@ -63,7 +63,7 @@ plotxy(T[, i:(i + 1)], group = group,
     zeroes = TRUE, pch = 16)
 
 ## SD and OD
-res <- scordis(fm, Xtest)
+res <- scordis(fm, Xtest)   # SD
 names(res)
 headm(res$res.train)
 headm(res$res)

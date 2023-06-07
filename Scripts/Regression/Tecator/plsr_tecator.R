@@ -13,6 +13,7 @@ typ <- Y$typ
 namy <- names(Y)[1:3]
 namy
 n <- nrow(X)
+wl_num <- as.numeric(names(X))
 
 table(typ)
 
@@ -62,8 +63,12 @@ headm(fm$P)
 headm(fm$C)
 fm$weights
 
-coef(fm)
-coef(fm, nlv = 3)
+res <- coef(fm)
+#res <- coef(fm, nlv = 3)
+res
+plot(wl_num, abs(res$B), type = "l")
+abline(h = 0, col = "grey")
+
 
 ## Projections
 
@@ -80,7 +85,7 @@ predict(fm, Xtest, nlv = 2)$pred
 predict(fm, Xtest, nlv = 0:2)$pred
 
 pred <- predict(fm, Xtest)$pred
-rmsep(pred, ytest)
+rmsep(pred, ytest)    # RMSEP_Test
 r2(pred, ytest)
 bias(pred, ytest)
 mse(pred, ytest)
@@ -102,7 +107,7 @@ abline(h = 0, col = "grey")
 fm0 <- lowess(r ~ pred, f = 1/4)
 lines(fm0$x, fm0$y, col = "blue", lwd = 2)
 
-## To compute RMSEC
+## To compute RMSEP_C
 pred <- predict(fm, Xtrain)$pred
 rmsep(pred, ytrain)
 r2(pred, ytrain)
