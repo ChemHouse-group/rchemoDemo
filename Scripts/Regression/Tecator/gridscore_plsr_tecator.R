@@ -89,7 +89,7 @@ ytest <- Ytest[, nam]
 ycal <- Ycal[, nam]
 yval <- Yval[, nam]
 
-nlv <- 0:20
+nlv <- 0:30
 res <- gridscorelv(Xcal, ycal, Xval, yval, 
     score = rmsep, fun = plskern,
     nlv = nlv, verb = TRUE)
