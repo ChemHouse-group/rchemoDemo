@@ -51,7 +51,7 @@ s
 res <- sampdp(Xtrain, k = nval)
 s <- res$train
 s
-## (4) Systematic sampling over y
+## (4) Stratified sampling by class
 res <- sampcla(ytrain, m = 25)
 s <- res$test
 s

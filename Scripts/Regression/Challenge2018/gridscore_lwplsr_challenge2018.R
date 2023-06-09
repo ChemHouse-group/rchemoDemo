@@ -60,7 +60,7 @@ c(ntot = ntot, ntrain = ntrain, ntest = ntest,
 
 nlvdis <- c(15, 20) ; diss <- "mahal" 
 h <- c(1, 2, 4, 6, Inf)
-k = c(150, 200, 350, 500)  
+k <- c(150, 200, 350, 500)  
 nlv <- 0:20 
 pars <- mpars(nlvdis = nlvdis, diss = diss,
     h = h, k = k)
